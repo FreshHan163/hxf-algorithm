@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS--排序算法总结</title>
+    <script src="./sortFunction.js"></script>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+        div, ul, table {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        .sort-list {
+            margin: 10px 20px;
+            padding: 10px;
+            list-style-type: decimal;
+        }
+        .sort-item {
+            margin: 10px 20px;
+        }
+        .sort {
+            margin: 10px 20px;
+            padding: 20px;
+        }
+    </style>
+    <script>
+        let bubbleArray = [3, 2, 5, 7, 6, 5, 0, -3, -1, 0];
+        // 从小到大排序，小的冒泡上升，在数组的左边
+        function bubbleSort(array) {
+            let oldArray = array;
+            let count = 0;
+            let arrayLength = oldArray.length;
+            for (let i = 0; i < arrayLength; i++) {
+                for (let y = arrayLength - 1; y > i; --y) {
+                    if (oldArray[y] < oldArray[y-1]) {
+                        // 交换
+                        count++;
+                        let temp = oldArray[y-1];
+                        oldArray[y-1] = oldArray[y];
+                        oldArray[y] = temp;
+                    }
+                }
+            }
+            console.log(count);
+            return oldArray;
+        }
+        // bubbleSort(bubbleArray);
+        console.log('原数组', bubbleArray);
+        console.log('冒泡排序算法返回结果,', bubbleSort(bubbleArray));
+
+        let advancedArray = [2, 3, -4, 0, 1, 2, 3, 4, 5];
+        function advancedBubbleSort(array) {
+            // 从小到大排序--升序序列，同时添加flag
+            let oldArray = array;
+            let count = 0;
+            let swapFlag = false;
+            let arrayLength = oldArray.length;
+            for (let i = 0; i < arrayLength; i++) {
+                swapFlag = false;
+                for (let y = arrayLength - 1; y > i; --y) {
+                    count++;
+                    if (oldArray[y] < oldArray[y-1]) {
+                        // 交换
+                        swapFlag = true;
+                        let temp = oldArray[y-1];
+                        oldArray[y-1] = oldArray[y];
+                        oldArray[y] = temp;
+                    }
+                }
+                if (swapFlag == false) {
+                    console.log('改进数组排序算法计数', count);
+                    return oldArray;
+                }
+            }
+            console.log('改进数组排序算法计数', count);
+            return oldArray;
+        }
+        console.log('改进冒泡排序算法', advancedBubbleSort(advancedArray));
+        window.onload = function() {
+            let string = window.advancedBubbleSort.toString();
+            let bubbleTextDom = document.getElementById('bubbleText');
+            bubbleTextDom.value = string;
+            // 快速排序--非递归
+            let quickString = window.quickSortNotR.toString();
+            let quickTextDom = document.getElementById('quickText');
+            quickTextDom.value = quickString;
+            // 快速排序--递归
+            let quickRecursionString = window.partSort.toString() + '\n' + window.quickSort.toString();
+            let quickRecursionTextDom = document.getElementById('quickRecursionText');
+            quickRecursionTextDom.value = quickRecursionString;
+            // 插入排序排序--递归
+            let insertString = window.insertSort.toString() ;
+            let insertTextDom = document.getElementById('insertText');
+            insertTextDom.value = insertString;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>排序算法</h1>
+    <ul class="sort-list">
+        <li class="sort-item"><a href="#bubble">冒泡排序</a></li>
+        <li class="sort-item"><a href="#insert">插入排序</a></li>
+        <li class="sort-item">选择排序</li>
+        <li class="sort-item"><a href="#quick">快速排序</a></li>
+    </ul>
+    <div class="sort bubble">
+        <h3><a id="bubble">冒泡排序</a></h3>
+        <h5>
+            <span>时间复杂度O(n^2)</span>
+            <span>稳定排序</span>
+            <span>空间复杂度O(1)</span>
+        </h5>
+        <textarea id="bubbleText" cols="100" rows="30"></textarea>
+    </div>
+    <div class="sort quick">
+        <h3><a id="quick">快速排序</a></h3>
+        <h5>
+            <span>时间复杂度--最坏 O(n^2)，最优/平均 O(nlog(n))</span>
+            <span>不稳定排序</span>
+            <span>空间复杂度log(n)</span>
+        </h5>
+        <h5>快速排序--非递归实现</h5>
+        <textarea id="quickText" cols="100" rows="40"></textarea>
+        <h5>快速排序--递归实现</h5>
+        <textarea id="quickRecursionText" cols="100" rows="30"></textarea>
+    </div>
+    <div class="sort insert">
+        <h3><a id="insert">插入排序</a></h3>
+        <h5>
+            <span>时间复杂度O(n^2)</span>
+            <span>稳定排序</span>
+            <span>空间复杂度O(1)</span>
+        </h5>
+        <textarea id="insertText" cols="100" rows="15"></textarea>
+    </div>
+</body>
+</html>

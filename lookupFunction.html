@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS--查找算法总结</title>
+    <script src="./lookupFunction.js"></script>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+        div, ul, table {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        .sort-list {
+            margin: 10px 20px;
+            padding: 10px;
+            list-style-type: decimal;
+        }
+        .sort-item {
+            margin: 10px 20px;
+        }
+        .sort {
+            margin: 10px 20px;
+            padding: 20px;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            let binaryString = window.BinarySearch.toString();
+            let binaryTextDom = document.getElementById('binaryText');
+            binaryTextDom.value = binaryString;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>查找算法</h1>
+    <ul class="sort-list">
+        <li class="sort-item"><a href="#insert">顺序查找</a></li>
+        <li class="sort-item"><a href="#binary">折半（二分）查找</a></li>
+        <li class="sort-item"><a href="#quick">分块查找？？？没考过</a></li>
+    </ul>
+    <div class="sort bubble">
+        <h3><a id="binary">顺序查找</a></h3>
+        <h5>
+            <span>时间复杂度O(log2n)</span>
+            <span>空间复杂度O(1)</span>
+        </h5>
+        <textarea id="binaryText" cols="100" rows="30"></textarea>
+    </div>
+</body>
+</html>
